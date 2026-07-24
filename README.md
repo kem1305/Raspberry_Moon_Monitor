@@ -1,34 +1,58 @@
-  This is my first project here. 
-  It is a real-time realistic Moon phase display, with some additional Moon info accessible by pressing a button.
-  This is also the first time I have done something with a Raspberry Pi, or with Python for that matter (I guess 
-this 50-year-old nerd still has some potential, especially with a little help from AI).Initially 
-  I wanted to make a small aviation radar that I saw on my feed, and I succeeded, but it wasn’t that satisfying. 
-  So I came up with the idea to make a realistic Moon tracker, since my wife and I are avid night-sky observers. 
-  This is how this project came to be.  
-  Now the Moon Monitor sits on my wife’s nightstand, and I’m very proud of how it turned out.
+# Moon Monitor – Real-time Moon Phase Display
 
-The components are:
-- 1x Raspberry Pi Zero 2W with a 32Gb SD Card (can be smaller for this one),
-- 1x TFT 1,28" Round Display GC9A01,
-- Push button 6x6x11 4 pins (could be 2 pins)
-- jumper cables for connections.
-- Mini-USB power source (I used an older charger with an old cable that I had)
+A real-time realistic Moon phase display with additional Moon information accessible via a push button.  
+Built with a Raspberry Pi Zero 2W and a 1.28" round TFT display.
 
-Connections between components:
-Display GC9A01	Raspberry /	GPIO	Obs.
-RST	            13 /	GPIO27	    Display reset
-CS	            24 /	GPIO8	      SPI0 CE0 (chip select)
-DC	            15 /	GPIO22	    Data/Command
-SDA	            19	/ GPIO10	    SPI0 MOSI
-SCL	            23 /	GPIO11    	SPI0 SCLK
-GND	            25 /	GND       	Ground
-VCC	            17 /	3.3V      	Display power source
-			
-Botão push	    Raspberry /	GPIO	Obs.
-Side 1	        11	/ GPIO17	    Digital input
-Side 2	        9	/ GND	          Ground (use internal pull_up)
+This is my first project ever with a Raspberry Pi (and with Python). I'm a 50-year-old nerd who still has some potential left — especially with a little help from AI.
 
-   The Python code running is main.py and it uses various different libraries:
+I originally wanted to build a small aviation radar I saw on my feed. I succeeded, but it wasn't that satisfying.  
+Since my wife and I are avid night-sky observers, I came up with the idea of a realistic Moon tracker instead.  
+This is how the **Moon Monitor** was born.
+
+The finished unit now sits proudly on my wife's nightstand.
+
+---
+
+## Hardware Components
+
+- 1× Raspberry Pi Zero 2W with 32 GB SD Card (a smaller card is also fine)
+- 1× 1.28" Round TFT Display **GC9A01**
+- 1× Push button 6×6×11 (4 pins — can also use a 2-pin version)
+- Jumper cables for connections
+- Mini-USB power source (I used an older charger with an old cable)
+
+---
+
+## Wiring / Connections
+
+### Display (GC9A01)
+
+| Display Pin | Raspberry Pi GPIO | Notes                  |
+|-------------|-------------------|------------------------|
+| RST         | GPIO27            | Display reset          |
+| CS          | GPIO8             | SPI0 CE0 (chip select) |
+| DC          | GPIO22            | Data/Command           |
+| SDA         | GPIO10            | SPI0 MOSI              |
+| SCL         | GPIO11            | SPI0 SCLK              |
+| GND         | GND               | Ground                 |
+| VCC         | 3.3V              | Display power          |
+
+### Push Button
+
+| Button Side | Raspberry Pi GPIO | Notes                        |
+|-------------|-------------------|------------------------------|
+| Side 1      | GPIO17            | Digital input                |
+| Side 2      | GND               | Ground (use internal pull-up)|
+
+---
+
+## Software
+
+The main program is `main.py`.
+
+### Required libraries
+
+```python
 import sys
 import math
 import time
@@ -37,16 +61,26 @@ import subprocess
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from datetime import datetime, timedelta
-from PIL import Image, ImageDraw, ImageFont, ImageEnhance   # for all the image handling, effects and transformations
-import ephem    # for all the astronomical calculations
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance   # image handling, effects & transformations
+import ephem                                               # astronomical calculations
 import RPi.GPIO as GPIO
-import GC9A01   # Display driver for GC9A01
+import GC9A01                                              # display driver for GC9A01
 
-  Besides the electronics, I created the case in Fusion 360 (Final-Moon_Fusion360.f3z) and printed it on a 
-Bambu Lab A1 Mini (Final-Moon.3mf) with Bambu Lab PLA Light Black filament.
-  The assembly was done with 3 M3 screws and brass inserts.
-  There are also the individual 3D component .stl files included.
-  Since this was a one-time project for me, I did not perfect the 3D parts for easy assembly. 
-  It wasn’t all that hard, but it required some patience to secure the display in place and to properly close 
-the lid with all the cables tucked in and the Raspberry Pi firmly seated.
-  But once it was all done, the final product looks very nice.
+---
+
+## 3D Printed Case
+
+The enclosure was designed in **Fusion 360** and printed on a **Bambu Lab A1 Mini** using **Bambu Lab PLA Light Black** filament.
+
+### Files included
+
+| File | Description |
+|------|-------------|
+| [`3D/Final-Moon_Fusion.f3z`](3D/Final-Moon_Fusion.f3z) | Full Fusion 360 project |
+| [`3D/Final-Moon.3mf`](3D/Final-Moon.3mf) | Bambu Studio project |
+| [`3D/*.stl`](3D/) | Individual printable parts |
+
+Assembly uses M3 screws and brass inserts.
+
+> **Note**  
+> This was a one-time personal project, so the parts are not optimized for super-easy assembly. A bit of patience is needed to seat the display and route the cables cleanly. Once closed, the final result looks very nice.
