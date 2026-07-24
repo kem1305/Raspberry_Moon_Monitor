@@ -80,7 +80,7 @@ The enclosure was designed in **Fusion 360** and printed on a **Bambu Lab A1 Min
 | [`3D/Final-Moon.3mf`](3D/Final-Moon.3mf) | Bambu Studio project |
 | [`3D/*.stl`](3D/) | Individual printable parts |
 
-Assembly uses M3 screws and brass inserts.
+Assembly uses M3 screws and brass inserts. 
 
 > **Note**  
 > This was a one-time personal project, so the parts are not optimized for super-easy assembly. A bit of patience is needed to seat the display and route the cables cleanly. Once closed, the final result looks very nice.
