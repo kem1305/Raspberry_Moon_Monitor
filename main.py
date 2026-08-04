@@ -336,8 +336,13 @@ def gerar_imagem_lua(instante_local=None):
         math.cos(dec_s) * math.sin(ra_s - ra_m),
         math.sin(dec_s) * math.cos(dec) - math.cos(dec_s) * math.sin(dec) * math.cos(ra_s - ra_m)
     )
+    
+    if fase < CICLO_LUNAR / 2:
+        offset_limbo = -90   # crescente
+    else:
+        offset_limbo = 90    # minguante
 
-    angulo = math.degrees(q) - math.degrees(chi) - 90 # If the moon is not correctly oriented, try changing the sign of the angles here.
+    angulo = math.degrees(q) - math.degrees(chi) + offset_limbo # If the moon is not correctly oriented, try changing the sign of the angles here.
     #========================================================================================================================
 
     img = (
