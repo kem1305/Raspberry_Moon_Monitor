@@ -11,6 +11,9 @@ This is how the **Moon Monitor** was born.
 
 The finished unit now sits proudly on my wife's nightstand.
 
+<img width="400" height="400" alt="Front-Moon" src="https://github.com/user-attachments/assets/8106f9f5-38d5-4d54-a5d9-61cbc14ea1d7" />
+<img width="400" height="400" alt="Front-Info" src="https://github.com/user-attachments/assets/cf4a39b7-f971-4be2-8021-5544bfb6e71d" />
+
 ---
 
 ## Hardware Components
