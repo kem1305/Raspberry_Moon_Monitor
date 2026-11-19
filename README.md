@@ -1,5 +1,8 @@
 # Moon Monitor – Real-time Moon Phase Display
 
+> **New: [Moon Monitor v2](v2/)** — a ground-up redesign on an ESP32-S3 with a custom round PCB, rear USB-C,
+> Wi-Fi setup portal and a new compact printable case. Design files, firmware and build notes (in Portuguese) are in [`v2/`](v2/README.md).
+
 A real-time realistic Moon phase display with additional Moon information accessible via a push button.  
 Built with a Raspberry Pi Zero 2W and a 1.28" round TFT display.
 

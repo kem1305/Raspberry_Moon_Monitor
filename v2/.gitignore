@@ -1,0 +1,8 @@
+__pycache__/
+*.kicad_prl
+firmware/.pio/
+firmware/test/sim
+firmware/test/test_astro
+case/render/
+hardware/fab/gerbers/
+*-backups/
